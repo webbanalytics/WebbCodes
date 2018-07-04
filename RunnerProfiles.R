@@ -4,6 +4,8 @@ library(stringr)
 
 runners <- search_users(q = 'runner' ,n=1000)
 
+#Lots of mentions of Maze and Blaze Runner
+#Remove all usernames and descriptions that include maze and blade
 maze_match_desc <- grepl('[Mm]aze',runners$description) 
 blade_match_desc <- grepl('[Bb]lade',runners$description) 
 maze_match_sn <- grepl('[Mm]aze',runners$screen_name) 
@@ -23,11 +25,13 @@ countdown <- function(minutes=15){
     Sys.sleep(60)
   }}
 
+
 i=1
 j=1
 numrun=length(runlist2)
-interv=200-1
+interv=180-1
 twlist <- list()
+#countdown(15)
 #For each array of runners, download 10 most recent tweets then shift to next array
 while (j<numrun){
 if (j+interv<numrun){
