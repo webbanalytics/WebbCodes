@@ -35,12 +35,12 @@ twlist <- list()
 #For each array of runners, download 10 most recent tweets then shift to next array
 while (j<numrun){
 if (j+interv<numrun){
-  twlist[i] <- get_timelines(user=runlist2[j:(j+interv)], n=10, exclude_replies = TRUE, include_rts = FALSE)
+  twlist[[i]] <- get_timelines(user=runlist2[j:(j+interv)], n=10, exclude_replies = TRUE, include_rts = FALSE)
   j = j+interv
   i = i+1
   countdown(15)
 } else {
-  twlist[i] <- get_timelines(user=runlist2[j:numrun], n=10, exclude_replies = TRUE, include_rts = FALSE)
+  twlist[[i]] <- get_timelines(user=runlist2[j:numrun], n=10, exclude_replies = TRUE, include_rts = FALSE)
   j = numrun}
 }
 
