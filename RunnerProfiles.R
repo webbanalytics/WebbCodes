@@ -30,7 +30,7 @@ oth_twdf$sample <- 0
 df <- rbind(run_twdf_new, oth_twdf)
 df$sample <- factor(df$sample, levels = c(0,1), labels = c("Non-Runners", "Runners"))
 
-#write.csv(df, file = "RunnerComparison.csv")
+write.csv(df[, c("text","screen_name", "sample")], file = "RunnerComparison.csv")
 
 #_________________________________________________________________________
 #Function to tell you have long before the next gathering of tweets
