@@ -48,16 +48,5 @@ if (j+interv<numrun){
 
 
 
-for (runner in runlist2){
-twlist[i] <- tryCatch({
-  get_timelines(user=runner, n=10, exclude_replies = TRUE, include_rts = FALSE)
-  }, error = function(e) {
-        countdown(15)
-        return(get_timelines(user=runner, n=10, exclude_replies = TRUE, include_rts = FALSE))
-          },finally = {i <- i+1})
-}
 
-
-countdown(15)
-
-run_tweets <- get_timelines(user=runlist2, n=10, exclude_replies = TRUE, include_rts = FALSE)
+#run_tweets <- get_timelines(user=runlist2, n=10, exclude_replies = TRUE, include_rts = FALSE)
