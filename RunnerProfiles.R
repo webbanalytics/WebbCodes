@@ -43,7 +43,8 @@ if (j+interv<numrun){
   twlist[[i]] <- get_timelines(user=runlist2[j:numrun], n=10, exclude_replies = TRUE, include_rts = FALSE)
   j = numrun}
 }
-
+#Save as dataframe
+run_twdf_new <- do.call("rbind", twlist)
 
 
 
