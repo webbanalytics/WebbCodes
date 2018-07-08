@@ -100,10 +100,18 @@ ggplot(frequency, aes(nonRunners, Runners)) +
   scale_y_log10(labels = percent_format()) +
   geom_abline(color = "red")
 
+afin <-  tidy_tweets %>% 
+  inner_join(get_sentiments("afinn")) %>% 
+  group_by(line) %>% 
+  summarise(sentiment = sum(score)) %>%
+  inner_join(df)
 
+afin %>%
+  group_by(sample) %>%
+  summarize(mean_sent = mean(sentiment), sd = sd(sentiment))
 
 write.csv(df[, c("text","screen_name", "sample", "line", "timestamp")], file = "RunnerComparison.csv")
-
+#df <- read.csv("RunnerComparison.csv")
 
 #_____________________FUNCTIONS___________________________________________
 #Function to tell you have long before the next gathering of tweets
