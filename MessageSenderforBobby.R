@@ -3,7 +3,7 @@ library(tidytext)
 library(dplyr)
 
 
-query <- "#Homeowner OR #Newcar"
+query <- "Toronto AND #Homeowner OR #Newcar"
 people <- search_tweets(
   query, n=18000, include_rts = FALSE, geocode = "45.145144,-80.290842,1573.389mi"
 )

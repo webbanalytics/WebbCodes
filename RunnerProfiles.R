@@ -110,7 +110,15 @@ afin %>%
   group_by(sample) %>%
   summarize(mean_sent = mean(sentiment), sd = sd(sentiment))
 
-write.csv(df[, c("text","screen_name", "sample", "line", "timestamp")], file = "RunnerComparison.csv")
+library(sm)
+boxplot(sentiment~sample,data = afin)
+sm.density.compare(afin$sentiment,afin$sample, xlim = c(-15,15))
+
+testres <- t.test(sentiment~sample,data = afin)
+barplot(testres[["estimate"]])
+
+
+#write.csv(df[, c("text","screen_name", "sample", "line", "timestamp")], file = "RunnerComparison.csv")
 #df <- read.csv("RunnerComparison.csv")
 
 #_____________________FUNCTIONS___________________________________________
