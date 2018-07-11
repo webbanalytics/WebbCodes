@@ -39,7 +39,7 @@ min(df[(df$sample=="nonRunners"),]$timestamp)
 
 
 df %>%
-  filter(timestamp > "2018-01-01") %>%
+  filter(timestamp > "2018-06-01") %>%
   ggplot(aes(x=timestamp)) +
     geom_freqpoly(colour="Blue") +
     facet_grid(sample~.) +
@@ -98,7 +98,8 @@ ggplot(frequency, aes(nonRunners, Runners)) +
   geom_text(aes(label = word), check_overlap = TRUE, vjust = 1.5) +
   scale_x_log10(labels = percent_format()) +
   scale_y_log10(labels = percent_format()) +
-  geom_abline(color = "red")
+  geom_abline(color = "red") +
+  xlab("Non-Runners") + ylab("Runners")
 
 afin <-  tidy_tweets %>% 
   inner_join(get_sentiments("afinn")) %>% 
