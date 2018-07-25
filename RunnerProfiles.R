@@ -28,9 +28,12 @@ countdown()
 oth_twdf <- timeline_gather(others, interv = 180)
 oth_twdf$sample <- 0
 
+
+remNames <- grep('.19[[:digit:]]{2}',oth_twdf$screen_name, value = TRUE)
+oth_twdf2 <- oth_twdf[!(oth_twdf$screen_name %in% remNames),]
 #-----------------------------------------------------------------------------
 #Combine and compare
-df <- rbind(run_twdf_new, oth_twdf)
+df <- rbind(run_twdf_new, oth_twdf2)
 df$sample <- factor(df$sample, levels = c(0,1), labels = c("nonRunners", "Runners"))
 table(df$sample)
 
@@ -117,7 +120,7 @@ sm.density.compare(afin$sentiment,afin$sample, xlim = c(-15,15))
 
 testres <- t.test(sentiment~sample,data = afin)
 barplot(testres[["estimate"]])
-
+testres
 
 #write.csv(df[, c("text","screen_name", "sample", "line", "timestamp")], file = "RunnerComparison.csv")
 #df <- read.csv("RunnerComparison.csv")
